@@ -3,8 +3,34 @@ clear all; clc
 run('~/Documents/MATLAB/vlfeat-0.9.21/toolbox/vl_setup')
 
 %load images into variables
-img1 = rgb2gray(imread(char('model_castle/8ADT8586.JPG')));
-img2 = rgb2gray(imread(char('model_castle/8ADT8587.JPG')));
+imagepaths = [  char('TeddyBearAdj/obj02_001.jpg'), char('TeddyBearAdj/obj02_002.jpg'), char('TeddyBearAdj/obj02_003.jpg'), ...
+                char('TeddyBearAdj/obj02_004.jpg'), char('TeddyBearAdj/obj02_005.jpg'), char('TeddyBearAdj/obj02_006.jpg'), ...
+                char('TeddyBearAdj/obj02_007.jpg'), char('TeddyBearAdj/obj02_008.jpg'), char('TeddyBearAdj/obj02_009.jpg'), ...
+                char('TeddyBearAdj/obj02_010.jpg'), char('TeddyBearAdj/obj02_011.jpg'), char('TeddyBearAdj/obj02_012.jpg'), ...
+                char('TeddyBearAdj/obj02_013.jpg'), char('TeddyBearAdj/obj02_014.jpg'), char('TeddyBearAdj/obj02_015.jpg'), ...
+                char('TeddyBearAdj/obj02_016.jpg'), char('TeddyBearAdj/obj02_017.jpg'), char('TeddyBearAdj/obj02_018.jpg'), ...
+                char('TeddyBearAdj/obj02_019.jpg'), char('TeddyBearAdj/obj02_020.jpg')]
+    
+img1 = rgb2gray(imread(char('TeddyBearAdj/obj02_001.jpg')));
+img2 = rgb2gray(imread(char('TeddyBearAdj/obj02_002.jpg')));
+img3 = rgb2gray(imread(char('TeddyBearAdj/obj02_003.jpg')));
+img4 = rgb2gray(imread(char('TeddyBearAdj/obj02_004.jpg')));
+img5 = rgb2gray(imread(char('TeddyBearAdj/obj02_005.jpg')));
+img6 = rgb2gray(imread(char('TeddyBearAdj/obj02_006.jpg')));
+img7 = rgb2gray(imread(char('TeddyBearAdj/obj02_007.jpg')));
+img8 = rgb2gray(imread(char('TeddyBearAdj/obj02_008.jpg')));
+img9 = rgb2gray(imread(char('TeddyBearAdj/obj02_009.jpg')));
+img10 = rgb2gray(imread(char('TeddyBearAdj/obj02_010.jpg')));
+img11 = rgb2gray(imread(char('TeddyBearAdj/obj02_011.jpg')));
+img12 = rgb2gray(imread(char('TeddyBearAdj/obj02_012.jpg')));
+img13 = rgb2gray(imread(char('TeddyBearAdj/obj02_013.jpg')));
+img14 = rgb2gray(imread(char('TeddyBearAdj/obj02_014.jpg')));
+img15 = rgb2gray(imread(char('TeddyBearAdj/obj02_015.jpg')));
+img16 = rgb2gray(imread(char('TeddyBearAdj/obj02_016.jpg')));
+img17 = rgb2gray(imread(char('TeddyBearAdj/obj02_017.jpg')));
+img18 = rgb2gray(imread(char('TeddyBearAdj/obj02_018.jpg')));
+img19 = rgb2gray(imread(char('TeddyBearAdj/obj02_019.jpg')));
+img20 = rgb2gray(imread(char('TeddyBearAdj/obj02_020.jpg')));
 
 %set thresholdfactor for the cornerness for the harris corner point detector
 thresholdFactor = 0.95;
