@@ -17,7 +17,7 @@ for i = 1:1:(size(imagepaths,1)-1)
     img1 = rgb2gray(imread(imagepaths(i,:)));
     img2 = rgb2gray(imread(imagepaths(i+1,:)));
     %set thresholdfactor for the cornerness for the harris corner point detector
-    thresholdFactor = 0.95;
+    thresholdFactor = 0.02;
 
     [f1,d1] = FeaturesAndDescriptors(img1, thresholdFactor);
     [f2,d2] = FeaturesAndDescriptors(img2, thresholdFactor);
@@ -61,6 +61,27 @@ for i = 1:1:(size(imagepaths,1)-1)
         
     end
 end
+
+
+n_cons_imgs = 3;
+pvm_mat = PointViewMatrix;
+n_views = size(pvm_mat,1);
+in = pvm_mat > 0;
+for i = 1:n_views
+    %make sure the indices roll over propperly
+    rows = 1+mod(i:(i+n_cons_imgs-1),n_views);
+    
+    %find measurement indices which occur in the amount of
+    %consecuitive images specified
+    meas_in = sum(in(rows,:))>(n_cons_imgs-1);
+    rows
+    sum(meas_in)
+    %retrieve actual indices
+    match_ind = pvm_mat(rows,meas_in);
+    
+end
+
+
 
 
 
