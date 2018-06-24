@@ -37,4 +37,6 @@ function [Fbest, BestInliers] = RANSAC(phat1, phat2, threshold)
             Fbest          = Fr;  
         end
     end
+    
+    
 end

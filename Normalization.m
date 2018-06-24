@@ -5,6 +5,6 @@ function [T, phat] = Normalization(x, y)
     T = [sqrt(2)/d  0           -mx*sqrt(2)/d;
          0          sqrt(2)/d   -my*sqrt(2)/d;
          0          0           1];
-    p = [x y ones(length(x),1)]';
+    p = [x' y' ones(length(x),1)]';
     phat = T*p;
 end

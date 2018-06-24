@@ -1,4 +1,4 @@
-function [A, BestMatches] = FundamentalMatrix(img1, img2, scores, matches, f1, f2, n, PLOT)
+function [A, BestMatches, FA] = FundamentalMatrix(img1, img2, scores, matches, f1, f2, n, PLOT)
     MatchesMatrix = [scores; matches];
     [elements, indices] = sort(MatchesMatrix(1,:));
     MatchesMatrix = MatchesMatrix(:,indices);
@@ -21,4 +21,5 @@ function [A, BestMatches] = FundamentalMatrix(img1, img2, scores, matches, f1, f
         A(i,:) = [xi1*xi2 xi1*yi2 xi1 yi1*xi2 yi1*yi2 yi1 xi2 yi2 1];
     end
     sprintf("Fundamental Matrix Calculated")
+    
 end

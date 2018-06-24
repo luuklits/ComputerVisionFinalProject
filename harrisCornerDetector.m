@@ -43,7 +43,7 @@ thresholdR = ((R>threshold) & ((imdilate(R, strel('square', 3))==R)));
 %imshow(thresholdR,[]);
 
 % Return the coordinates
-[r,c] = find(thresholdR(2:end-1,2:end-1)>threshold);
+[r,c] = find(thresholdR(2:end-1,2:end-1)==1);
 r = r + 1;
 c = c + 1;
 
