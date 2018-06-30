@@ -1,6 +1,6 @@
 function [Fbest, BestInliers] = RANSAC(phat1, phat2, threshold)
     NrBestInliers = 0;
-    N = 1000;
+    N = 20000;
     for n = 1:N
         perm = randperm(length(phat1));
         selec = perm(1:8);

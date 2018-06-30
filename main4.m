@@ -9,15 +9,18 @@ imagepaths = [  [char('model_castle_adj/8ADT8586.JPG')]; [char('model_castle_adj
                 [char('model_castle_adj/8ADT8595.JPG')]; [char('model_castle_adj/8ADT8596.JPG')]; [char('model_castle_adj/8ADT8597.JPG')]; ...
                 [char('model_castle_adj/8ADT8598.JPG')]; [char('model_castle_adj/8ADT8599.JPG')]; [char('model_castle_adj/8ADT8600.JPG')]; ...
                 [char('model_castle_adj/8ADT8601.JPG')]; [char('model_castle_adj/8ADT8602.JPG')]; [char('model_castle_adj/8ADT8603.JPG')]; ...
-                [char('model_castle_adj/8ADT8604.JPG')];];
+                [char('model_castle_adj/8ADT8604.JPG')]; [char('model_castle_adj/8ADT8586.JPG')];];
+            
+
     
 PointViewMatrix = [];
 LocationsMatrix = [];
+IAMatrix = [];
 for i = 1:1:(size(imagepaths,1)-1)
     img1 = rgb2gray(imread(imagepaths(i,:)));
     img2 = rgb2gray(imread(imagepaths(i+1,:)));
     %set thresholdfactor for the cornerness for the harris corner point detector
-    thresholdFactor = 0.9;
+    thresholdFactor = 0.2;
 
     [f1,d1] = FeaturesAndDescriptors(img1, thresholdFactor);
     [f2,d2] = FeaturesAndDescriptors(img2, thresholdFactor);
@@ -50,6 +53,8 @@ for i = 1:1:(size(imagepaths,1)-1)
         yinliers = [y1inliers; y2inliers];
         xinliers(:,IA) = [];
         yinliers(:,IA) = [];
+        sprintf("size IA: %i", length(IA))
+        IAMatrix = [IAMatrix, length(IA)]
         extension = zeros(size(PointViewMatrix,1),size(inliermatches,2));
         PointViewMatrix = [PointViewMatrix, extension];
         LocationsMatrixX = [LocationsMatrixX, extension];
@@ -62,11 +67,16 @@ for i = 1:1:(size(imagepaths,1)-1)
     end
 end
 
+save("PointViewMatrixCastle02.mat","PointViewMatrix")
+save("LocationsMatrixXCastle02.mat", "LocationsMatrixX")
+save("LocationsMatrixYCastle02.mat", "LocationsMatrixY")
+
 
 n_cons_imgs = 3;
 pvm_mat = PointViewMatrix;
 n_views = size(pvm_mat,1);
 in = pvm_mat > 0;
+
 for i = 1:n_views
     %make sure the indices roll over propperly
     rows = 1+mod(i:(i+n_cons_imgs-1),n_views);
@@ -80,7 +90,6 @@ for i = 1:n_views
     match_ind = pvm_mat(rows,meas_in);
     
 end
-
 
 
 
